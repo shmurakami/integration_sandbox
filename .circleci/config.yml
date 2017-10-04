@@ -36,8 +36,9 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      - run: composer post-root-package-install
-      - run: composer post-create-project-cmd
+      - run: |
+          cp .env.example .env
+          php artisan key:generate
         
       # run tests!
       - run: composer test
