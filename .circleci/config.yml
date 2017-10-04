@@ -37,7 +37,7 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
-      - run: phpunit
+      - run: composer test
 
 install_composer: &install_composer
     command: |
