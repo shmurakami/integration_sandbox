@@ -19,8 +19,6 @@ jobs:
     steps:
       - checkout
 
-      - run: composer post-root-package-install
-      - run: composer post-create-project-cmd
       - run:
           <<: *install_composer
 
@@ -37,6 +35,9 @@ jobs:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
+
+      - run: composer post-root-package-install
+      - run: composer post-create-project-cmd
         
       # run tests!
       - run: composer test
