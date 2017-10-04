@@ -19,6 +19,8 @@ jobs:
     steps:
       - checkout
 
+      - run: composer post-root-package-install
+      - run: composer post-create-project-cmd
       - run:
           <<: *install_composer
 
